@@ -104,7 +104,7 @@ Examples:
         "-p",
         "--preset",
         choices=["mild", "moderate", "aggressive"],
-        default="aggressive",
+        default="moderate",
         help="Noise reduction level (default: %(default)s",
     )
     parser.add_argument(

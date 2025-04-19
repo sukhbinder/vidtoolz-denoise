@@ -14,7 +14,7 @@ def test_create_parser():
     args = parser.parse_args(["input.mp4"])
     assert args.input == "input.mp4"
     assert args.output is None
-    assert args.preset == "aggressive"
+    assert args.preset == "moderate"
     assert args.nf is None
     assert args.highpass == 100
     assert args.lowpass == 8000
