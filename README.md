@@ -24,7 +24,43 @@ vidtoolz install vidtoolz-denoise
 
 type ``vid denoise --help`` to get help
 
+```bash
+usage: vid denoise [-h] [-o OUTPUT] [-p {mild,moderate,aggressive}] [-nf NF]
+                   [-hp HIGHPASS] [-lp LOWPASS]
+                   input
 
+Denoise audio in a video
+
+positional arguments:
+  input                 
+                        Reduce background noise and hum from video audio using FFmpeg's afftdn filter.
+                        
+                        You can choose from presets (mild, moderate, aggressive) or fine-tune using --nf directly.
+                        Presets define how many afftdn passes are used:
+                          mild       = 1 pass (light cleanup)
+                          moderate   = 2 passes (balanced)
+                          aggressive = 2 passes (default, heavy cleanup)
+                        
+                        Use --nf to override the default noise floor (e.g. -20, -25, -30, -35).
+                        
+                        Examples:
+                          vid denoise input.mp4 
+                          vid denoise input.mp4  --preset moderate
+                          vid denoise input.mp4  --nf -25 --highpass 100 --lowpass 8000
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -o OUTPUT, --output OUTPUT
+                        Path to output video file with denoised audio. default: None
+  -p {mild,moderate,aggressive}, --preset {mild,moderate,aggressive}
+                        Noise reduction level (default: moderate
+  -nf NF, --nf NF       Noise floor in dB (e.g., -20, -25, -30). Overrides preset’s nf if set. default: None
+  -hp HIGHPASS, --highpass HIGHPASS
+                        High-pass filter cutoff frequency in Hz (e.g., 100  to remove low hum) default: 100
+  -lp LOWPASS, --lowpass LOWPASS
+                        Low-pass filter cutoff frequency in Hz (e.g., 8000 to remove hiss) default: 8000
+
+```
 
 ## Development
 
